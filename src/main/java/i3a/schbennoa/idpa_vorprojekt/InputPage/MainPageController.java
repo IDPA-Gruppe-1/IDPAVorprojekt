@@ -1,4 +1,4 @@
-package i3a.schbennoa.idpa_vorprojekt;
+package i3a.schbennoa.idpa_vorprojekt.InputPage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
