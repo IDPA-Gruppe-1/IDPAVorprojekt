@@ -10,5 +10,9 @@ package i3a.schbennoa.idpa_vorprojekt;
  * @author Shenia Scherer
  */
 public class test {
+
+	public void doSmth(){
+System.out.println("");
+	}
     
 }
