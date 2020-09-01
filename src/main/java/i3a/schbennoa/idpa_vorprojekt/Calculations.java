@@ -82,6 +82,7 @@ public class Calculations {
 			for(int i=0;i<dauerInJahren;i++){
 			konten[2].setkontoStand(0);
 			konten[2].add(abschreibungsBetrag,1);	
+			konten[1-dirIn].add(0,0);
 			konten[dirIn].add(abschreibungsBetrag, dirIn);
 			}	
 
@@ -96,6 +97,7 @@ public class Calculations {
 			abschreibungsBetrag=(konten[0].getkontoStand()-konten[1].getkontoStand())*(abschProzent/100);
 			konten[2].setkontoStand(0);
 			konten[2].add(abschreibungsBetrag,1);	
+			konten[1-dirIn].add(0,0);
 			konten[dirIn].add(abschreibungsBetrag,dirIn);
 			}
 		}

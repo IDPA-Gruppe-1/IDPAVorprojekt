@@ -34,17 +34,20 @@ public class OutputPageController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
-
+		
+		calculations.startProgram();
 		//Erstellen der Pagination mit Länge der Abschreibungsliste
-		//Eigentlich: pagesOut=new Pagination(calculations.getKonten()[2].getBetraegeList().size(),0);
-		pagesOut.setPageCount(10);
+		pagesOut.setPageCount(calculations.getKonten()[2].getBetraegeList().size());
+		//pagesOut.setPageCount(10);
 		 pagesOut.setPageFactory((pageIndex) -> {
 
-            Label label1 = new Label("Jahr: " + pageIndex+1);
+            Label label1 = new Label("Jahr: " + (pageIndex+1));
 
-            Label label2 = new Label("Main content of the page ...");
+            Label label2 = new Label("Anlagevermögen: "+calculations.getKonten()[0].getBetraegeList().get(pageIndex));
+            Label label3 = new Label("WB Anlagevermögen: "+calculations.getKonten()[1].getBetraegeList().get(pageIndex));
+            Label label4 = new Label("Abschreibungen: "+calculations.getKonten()[2].getBetraegeList().get(pageIndex));
 
-            return new VBox(label1, label2);
+            return new VBox(label1, label2,label3,label4);
         });
 
 	}
