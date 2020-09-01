@@ -46,6 +46,8 @@ public class Calculations {
 	
 	}
 
+	
+
 	//Methode für Singleton
 	public static Calculations getInstance(){
 		if(instance==null){
@@ -125,6 +127,12 @@ public class Calculations {
 		
 	}
 
+	public Konto[] getKonten() {
+		return konten;
+	}
+
+
+	
 	
 	
 }
