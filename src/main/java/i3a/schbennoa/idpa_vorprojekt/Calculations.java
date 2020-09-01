@@ -18,13 +18,25 @@ public class Calculations {
 	double dauerInJahren=0;
 	double abschProzent=0;
 	double restwert=0;
+	
+	//Variable ob Direkt oder Indirekt
 	int dirIn=0;
+
+
+	//Variable ob Linear oder Degressiv
 	int liDeg=0;
+
+
+
+	//Singleton Pattern Instanz
+	static Calculations instance=null;
+
+	
 	Scanner in=new Scanner(System.in);
 	Konto[] konten=new Konto[3];
 
 
-	public Calculations(){
+	private Calculations(){
 		//Konto[0]=anlagevermoegen
 		//Konto[1]=WB Anlagevermoegen
 		//Konto[2]=abschreibungen
@@ -32,6 +44,15 @@ public class Calculations {
 			konten[i]=new Konto();
 		}
 	
+	}
+
+	//Methode für Singleton
+	public static Calculations getInstance(){
+		if(instance==null){
+			instance=new Calculations();
+		}
+
+		return instance;
 	}
 	
 	public void startProgram(){
