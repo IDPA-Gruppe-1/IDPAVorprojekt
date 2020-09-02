@@ -93,7 +93,6 @@ public class Calculations {
 			abschProzent=Double.parseDouble(in.nextLine());
 			double abschreibungsBetrag=0;
 			for(int i=0;i<dauerInJahren;i++){
-			//abschreibungsBetrag=konten[0].getkontoStand()*(abschProzent/100);
 			abschreibungsBetrag=(konten[0].getkontoStand()-konten[1].getkontoStand())*(abschProzent/100);
 			konten[2].setkontoStand(0);
 			konten[2].add(abschreibungsBetrag,1);	
@@ -103,7 +102,6 @@ public class Calculations {
 		}
 		
 		
-		printOut();
 		
 
 
