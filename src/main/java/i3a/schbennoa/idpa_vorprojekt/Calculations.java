@@ -111,23 +111,6 @@ public class Calculations {
 	}
 
 
-	private void printOut(){
-		System.out.println("Länge WB: "+konten[1].getBetraegeList().size());
-		for(int i=0;i<dauerInJahren;i++){
-			System.out.println("\n");
-			System.out.println("Abschreibungen: "+konten[2].getBetraegeList().get(i));
-			if(konten[0].getBetraegeList().size()==1){
-				//Arbeiten mit WB
-				System.out.println("WB Anlagevermoegen: "+konten[1].getBetraegeList().get(i));
-				System.out.println("Anlagevermoegen: "+konten[0].getkontoStand());
-			}else{
-				//Arbeiten mit Anlagevermoegen
-				System.out.println("Anlagevermoegen: "+konten[0].getBetraegeList().get(i));
-			}
-		}
-		System.out.println("\n Anlagevermögen am Ende: "+konten[0].getkontoStand());
-		
-	}
 
 	public Konto[] getKonten() {
 		return konten;
