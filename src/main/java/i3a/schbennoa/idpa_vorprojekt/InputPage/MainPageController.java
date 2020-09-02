@@ -1,5 +1,6 @@
 package i3a.schbennoa.idpa_vorprojekt.InputPage;
 
+import i3a.schbennoa.idpa_vorprojekt.Calculations;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -40,7 +41,10 @@ public class MainPageController implements Initializable {
 	@FXML
 	private Label lblTitle;
     
-    
+   	
+	//Singleton Instanz von Calculations
+	Calculations calculations=Calculations.getInstance();
+	
 	@FXML
 	private void btnBerechnen(ActionEvent event) {
 		
