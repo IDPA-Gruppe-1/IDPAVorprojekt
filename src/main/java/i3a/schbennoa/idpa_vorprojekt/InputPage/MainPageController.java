@@ -43,6 +43,26 @@ public class MainPageController implements Initializable {
     
 	@FXML
 	private void btnBerechnen(ActionEvent event) {
+		double anschaffungswert;
+		double dauerInJahre;
+		double restwertProzent;
+		
+		
+		try {
+			anschaffungswert = Double.parseDouble(this.txtAnschaffungswert.getText());
+			dauerInJahre = Double.parseDouble(this.txtDauerInJahre.getText());
+			restwertProzent = Double.parseDouble(this.txtRestwertProzent.getText());
+			
+			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 1) {
+				throw new RuntimeException("nicht plausible Eingaben");
+			}
+		} 
+		catch (Exception e) {
+			this.lblInfo.setText("Es wurden nicht alle Felder* ausgefüllt\noder Buchstaben anstatt Zahlen > 0 eingegeben.");
+			System.out.println(e.getMessage());
+		}
+		
+		// Hier Methoden für die Berechnung aufrufen
 		
 	}
     
