@@ -57,18 +57,11 @@ public class Calculations {
 		return instance;
 	}
 	
-	public void startProgram(){
-		System.out.println("Geben sie bitte den Anschaffungswert ein");
-		anschaffungswert=Double.parseDouble(in.nextLine());
-
-		System.out.println("Geben sie bitte die Dauer in Jahren ein");
-		dauerInJahren=Double.parseDouble(in.nextLine());
-		
-		System.out.println("Wollen sie direkt(0) oder indirekt(1) verbuchen?");
-		dirIn=Integer.parseInt(in.nextLine());
-		
-		System.out.println("Wollen sie linear(0) oder degressiv(1) verbuchen?");
-		liDeg=Integer.parseInt(in.nextLine());
+	public void calculate(double anschaffungswert, int dauerInJahren, int dirIn,int liDeg){
+		this.anschaffungswert=anschaffungswert;
+		this.dauerInJahren=dauerInJahren;
+		this.dirIn=dirIn;
+		this.liDeg=liDeg;
 		
 
 		//Befüllen von Anlagevermoegen Konto mit anschaffungswert
