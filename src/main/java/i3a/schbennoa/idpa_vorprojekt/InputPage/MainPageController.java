@@ -37,6 +37,8 @@ public class MainPageController implements Initializable {
 	private Button btnBerechnen;
 	@FXML
 	private Label lblInfo;
+	@FXML
+	private Label lblTitle;
     
     
 	@FXML

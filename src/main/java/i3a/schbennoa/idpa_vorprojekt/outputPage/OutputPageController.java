@@ -27,6 +27,8 @@ public class OutputPageController implements Initializable {
 
 	//Instanz der Calculations Klasse
 	Calculations calculations = Calculations.getInstance();
+	@FXML
+	private Label lblTitle;
 
 	/**
 	 * Initializes the controller class.

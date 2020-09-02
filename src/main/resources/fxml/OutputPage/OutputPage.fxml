@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="616.0" prefWidth="793.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="i3a.schbennoa.idpa_vorprojekt.outputPage.OutputPageController">
 	<stylesheets>
 		<URL value="@/styles/outputStyles/OutputStyles.css" />
 	</stylesheets>
    <children>
-      <Pagination fx:id="pagesOut" layoutX="125.0" layoutY="108.0" pageCount="100" prefHeight="403.0" prefWidth="510.0" />
+      <Pagination fx:id="pagesOut" layoutX="125.0" layoutY="87.0" pageCount="100" prefHeight="424.0" prefWidth="545.0" />
+      <Label fx:id="lblTitle" layoutX="268.0" layoutY="59.0" text="Abschreibungsrechner">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
