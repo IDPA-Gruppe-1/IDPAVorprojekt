@@ -11,8 +11,8 @@
 		<URL value="@/styles/outputStyles/OutputStyles.css" />
 	</stylesheets>
    <children>
-      <Pagination fx:id="pagesOut" layoutX="125.0" layoutY="87.0" pageCount="100" prefHeight="424.0" prefWidth="545.0" />
-      <Label fx:id="lblTitle" layoutX="268.0" layoutY="59.0" text="Abschreibungsrechner">
+      <Pagination fx:id="pagesOut" layoutX="125.0" layoutY="157.0" pageCount="100" prefHeight="424.0" prefWidth="545.0" />
+      <Label fx:id="lblTitle" layoutX="269.0" layoutY="23.0" text="Abschreibungsrechner">
          <font>
             <Font size="26.0" />
          </font>

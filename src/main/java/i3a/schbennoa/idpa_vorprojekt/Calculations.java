@@ -57,7 +57,7 @@ public class Calculations {
 		return instance;
 	}
 	
-	public void calculate(double anschaffungswert, int dauerInJahren, int dirIn,int liDeg){
+	public void calculate(double anschaffungswert, int dauerInJahren, int dirIn,int liDeg,double restWertProzent){
 		this.anschaffungswert=anschaffungswert;
 		this.dauerInJahren=dauerInJahren;
 		this.dirIn=dirIn;
@@ -69,8 +69,7 @@ public class Calculations {
 		
 		if(liDeg==0){
 		//Lineare Abschreibung
-			System.out.println("Geben sie den Restwert ein");		
-			restwert=Double.parseDouble(in.nextLine());
+			restwert=restWertProzent;
 			double abschreibungsBetrag=((anschaffungswert-restwert)/dauerInJahren);	
 			for(int i=0;i<dauerInJahren;i++){
 			konten[2].setkontoStand(0);
@@ -82,8 +81,7 @@ public class Calculations {
 		
 		}else{
 		//Degressive Abschreibung	
-			System.out.println("Geben sie die Abschreibung pro Jahr in prozent an");
-			abschProzent=Double.parseDouble(in.nextLine());
+			abschProzent=restWertProzent;
 			double abschreibungsBetrag=0;
 			for(int i=0;i<dauerInJahren;i++){
 			abschreibungsBetrag=(konten[0].getkontoStand()-konten[1].getkontoStand())*(abschProzent/100);

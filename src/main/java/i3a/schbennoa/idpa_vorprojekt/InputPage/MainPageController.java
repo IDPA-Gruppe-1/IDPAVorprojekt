@@ -1,16 +1,23 @@
 package i3a.schbennoa.idpa_vorprojekt.InputPage;
 
 import i3a.schbennoa.idpa_vorprojekt.Calculations;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 public class MainPageController implements Initializable {
     
@@ -46,18 +53,21 @@ public class MainPageController implements Initializable {
 	Calculations calculations=Calculations.getInstance();
 	
 	@FXML
-	private void btnBerechnen(ActionEvent event) {
-		double anschaffungswert;
-		double dauerInJahre;
-		double restwertProzent;
+	private void btnBerechnen(ActionEvent event) throws IOException {
+		double anschaffungswert=0.0;
+		int dauerInJahre=0;
+		double restwertProzent=0.0;
+		int dirIn=0;
+		int liDeg=0;
+
 		
 		
 		try {
 			anschaffungswert = Double.parseDouble(this.txtAnschaffungswert.getText());
-			dauerInJahre = Double.parseDouble(this.txtDauerInJahre.getText());
+			dauerInJahre = Integer.parseInt(this.txtDauerInJahre.getText());
 			restwertProzent = Double.parseDouble(this.txtRestwertProzent.getText());
 			
-			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 1) {
+			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 0) {
 				throw new RuntimeException("nicht plausible Eingaben");
 			}
 		} 
@@ -66,7 +76,37 @@ public class MainPageController implements Initializable {
 			System.out.println(e.getMessage());
 		}
 		
+		RadioButton selectedRadioZone = (RadioButton) tgAbschreibungsart.getSelectedToggle();
+            String selAbArt = selectedRadioZone.getId();
+	    if(selAbArt=="rbDirekt"){
+		    dirIn=0;
+	    }else{
+		    dirIn=1;
+	    }
+
+	    selectedRadioZone=(RadioButton)tgAbschreibungsmethode.getSelectedToggle();
+	    String selAbMeth=selectedRadioZone.getId();
+	    if(selAbMeth=="rbLinear"){
+		    liDeg=0;
+	    }else{
+		    liDeg=1;
+	    }
 		// Hier Methoden für die Berechnung aufrufen
+		calculations.calculate(anschaffungswert,dauerInJahre,dirIn,liDeg,restwertProzent);
+
+		  try {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = new Stage();
+        stage.setTitle("New Window");
+        stage.setScene(scene);
+        stage.show();
+	((Node)(event.getSource())).getScene().getWindow().hide();
+    } catch (IOException e) {
+        Logger logger = Logger.getLogger(getClass().getName());
+        logger.log(Level.SEVERE, "Failed to create new Window.", e);
+    }
 		
 	}
     
