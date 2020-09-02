@@ -78,7 +78,7 @@ public class MainPageController implements Initializable {
 		
 		RadioButton selectedRadioZone = (RadioButton) tgAbschreibungsart.getSelectedToggle();
             String selAbArt = selectedRadioZone.getId();
-	    if(selAbArt=="rbDirekt"){
+	    if(selAbArt==rbDirekt.getId()){
 		    dirIn=0;
 	    }else{
 		    dirIn=1;
@@ -86,7 +86,7 @@ public class MainPageController implements Initializable {
 
 	    selectedRadioZone=(RadioButton)tgAbschreibungsmethode.getSelectedToggle();
 	    String selAbMeth=selectedRadioZone.getId();
-	    if(selAbMeth=="rbLinear"){
+	    if(selAbMeth==rbLinear.getId()){
 		    liDeg=0;
 	    }else{
 		    liDeg=1;
@@ -97,9 +97,9 @@ public class MainPageController implements Initializable {
 		  try {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
         Stage stage = new Stage();
-        stage.setTitle("New Window");
+        stage.setTitle("Ausgabe");
         stage.setScene(scene);
         stage.show();
 	((Node)(event.getSource())).getScene().getWindow().hide();
@@ -122,6 +122,8 @@ public class MainPageController implements Initializable {
 		rbDegressive.setToggleGroup(tgAbschreibungsmethode);
 		
 		txtRestwertProzent.setVisible(false);
+		lblRestwertProzent.setText("Restwert der Anlage *");
+		txtRestwertProzent.setVisible(true);	
 	}    
 
 	@FXML

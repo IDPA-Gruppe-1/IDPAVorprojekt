@@ -27,8 +27,6 @@ public class OutputPageController implements Initializable {
 
 	//Instanz der Calculations Klasse
 	Calculations calculations = Calculations.getInstance();
-	@FXML
-	private Label lblTitle;
 
 	/**
 	 * Initializes the controller class.
@@ -43,8 +41,13 @@ public class OutputPageController implements Initializable {
 		 pagesOut.setPageFactory((pageIndex) -> {
 
             Label label1 = new Label("Jahr: " + (pageIndex+1));
+	    double anlageVermoegen=calculations.getKonten()[0].getBetraegeList().get(pageIndex);
 
-            Label label2 = new Label("Anlagevermögen: "+calculations.getKonten()[0].getBetraegeList().get(pageIndex));
+	    //Wenn die Abschreibungsmethode direkt ist, ist das Anlagevermöegen=Anlagevermögen-Abschreibungen, ansonsten bleibt es immer gleich
+	    if(calculations.getKonten()[1].getBetraegeList().get(0)==0){
+		    anlageVermoegen-=calculations.getKonten()[2].getBetraegeList().get(pageIndex);
+	    }
+            Label label2 = new Label("Anlagevermögen: "+anlageVermoegen);
             Label label3 = new Label("WB Anlagevermögen: "+calculations.getKonten()[1].getBetraegeList().get(pageIndex));
             Label label4 = new Label("Abschreibungen: "+calculations.getKonten()[2].getBetraegeList().get(pageIndex));
 
