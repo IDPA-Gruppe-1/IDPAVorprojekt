@@ -60,7 +60,20 @@ public class MainPageController implements Initializable {
 		rbIndirekt.setToggleGroup(tgAbschreibungsart);
 		rbLinear.setToggleGroup(tgAbschreibungsmethode);
 		rbDegressive.setToggleGroup(tgAbschreibungsmethode);
-	    
+		
+		txtRestwertProzent.setVisible(false);
 	}    
+
+	@FXML
+	private void rbLinear(ActionEvent event) {
+		lblRestwertProzent.setText("Restwert der Anlage *");
+		txtRestwertProzent.setVisible(true);
+	}
+
+	@FXML
+	private void rbDegressive(ActionEvent event) {
+		lblRestwertProzent.setText("Abschreibung in Prozent *");
+		txtRestwertProzent.setVisible(true);
+	}
 
 }
