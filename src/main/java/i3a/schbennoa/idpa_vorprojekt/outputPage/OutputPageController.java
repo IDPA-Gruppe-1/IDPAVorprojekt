@@ -37,7 +37,6 @@ public class OutputPageController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
 		
-		calculations.startProgram();
 		//Erstellen der Pagination mit Länge der Abschreibungsliste
 		pagesOut.setPageCount(calculations.getKonten()[2].getBetraegeList().size());
 		//pagesOut.setPageCount(10);
