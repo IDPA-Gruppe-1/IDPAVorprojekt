@@ -39,7 +39,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label fx:id="lblInfo" layoutX="12.0" layoutY="603.0" text="Alle Felder mit * sind Pflichtfelder" textFill="#da0808">
+      <Label fx:id="lblInfo" layoutX="12.0" layoutY="603.0" text="Alle Felder mit * sind Pflichtfelder" textFill="WHITE">
          <font>
             <Font size="12.0" />
          </font>
