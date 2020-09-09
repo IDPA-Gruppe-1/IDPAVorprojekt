@@ -58,6 +58,9 @@ public class Calculations {
 	}
 	
 	public void calculate(double anschaffungswert, int dauerInJahren, int dirIn,int liDeg,double restWertProzent){
+		for(int i=0;i<konten.length;i++){
+			konten[i].setkontoStand(0);
+		}
 		this.anschaffungswert=anschaffungswert;
 		this.dauerInJahren=dauerInJahren;
 		this.dirIn=dirIn;
