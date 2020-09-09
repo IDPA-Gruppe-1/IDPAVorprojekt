@@ -50,10 +50,11 @@ public class MainPageController implements Initializable {
     
    	
 	//Singleton Instanz von Calculations
-	Calculations calculations=Calculations.getInstance();
+	private Calculations calculations = Calculations.getInstance();
 	
 	@FXML
 	private void btnBerechnen(ActionEvent event) throws IOException {
+		
 		double anschaffungswert=0.0;
 		int dauerInJahre=0;
 		double restwertProzent=0.0;
@@ -70,43 +71,52 @@ public class MainPageController implements Initializable {
 			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 0) {
 				throw new RuntimeException("nicht plausible Eingaben");
 			}
+			
+				RadioButton selectedRadioZone = (RadioButton) tgAbschreibungsart.getSelectedToggle();
+				String selAbArt = selectedRadioZone.getId();
+				
+				if(selAbArt==rbDirekt.getId()){
+					dirIn=0;
+				}else{
+					dirIn=1;
+				}
+
+				selectedRadioZone=(RadioButton)tgAbschreibungsmethode.getSelectedToggle();
+				String selAbMeth=selectedRadioZone.getId();
+				
+				if(selAbMeth==rbLinear.getId()){
+					liDeg=0;
+				}else{
+					liDeg=1;
+				}
+				
+				// Hier Methoden für die Berechnung aufrufen
+				calculations.calculate(anschaffungswert,dauerInJahre,dirIn,liDeg,restwertProzent);
+
+				try {
+					
+					FXMLLoader fxmlLoader = new FXMLLoader();
+					fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
+					Scene scene = new Scene(fxmlLoader.load(), 600, 600);
+					Stage stage = new Stage();
+					stage.setTitle("Ausgabe");
+					stage.setScene(scene);
+					stage.show();
+					((Node)(event.getSource())).getScene().getWindow().hide();
+					
+				} catch (IOException e) {
+					
+					Logger logger = Logger.getLogger(getClass().getName());
+					logger.log(Level.SEVERE, "Failed to create new Window.", e);
+					
+				}
 		} 
 		catch (Exception e) {
 			this.lblInfo.setText("Es wurden nicht alle Felder* ausgefüllt\noder Buchstaben anstatt Zahlen > 0 eingegeben.");
 			System.out.println(e.getMessage());
 		}
 		
-		RadioButton selectedRadioZone = (RadioButton) tgAbschreibungsart.getSelectedToggle();
-            String selAbArt = selectedRadioZone.getId();
-	    if(selAbArt==rbDirekt.getId()){
-		    dirIn=0;
-	    }else{
-		    dirIn=1;
-	    }
-
-	    selectedRadioZone=(RadioButton)tgAbschreibungsmethode.getSelectedToggle();
-	    String selAbMeth=selectedRadioZone.getId();
-	    if(selAbMeth==rbLinear.getId()){
-		    liDeg=0;
-	    }else{
-		    liDeg=1;
-	    }
-		// Hier Methoden für die Berechnung aufrufen
-		calculations.calculate(anschaffungswert,dauerInJahre,dirIn,liDeg,restwertProzent);
-
-		  try {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
-        Stage stage = new Stage();
-        stage.setTitle("Ausgabe");
-        stage.setScene(scene);
-        stage.show();
-	((Node)(event.getSource())).getScene().getWindow().hide();
-    } catch (IOException e) {
-        Logger logger = Logger.getLogger(getClass().getName());
-        logger.log(Level.SEVERE, "Failed to create new Window.", e);
-    }
+	
 		
 	}
     
