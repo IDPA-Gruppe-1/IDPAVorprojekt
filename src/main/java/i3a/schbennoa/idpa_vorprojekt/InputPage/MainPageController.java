@@ -97,10 +97,13 @@ public class MainPageController implements Initializable {
 		  try {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 808, 616);
         Stage stage = new Stage();
         stage.setTitle("Ausgabe");
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.sizeToScene();
+        
         stage.show();
 	((Node)(event.getSource())).getScene().getWindow().hide();
     } catch (IOException e) {

@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="616.0" prefWidth="793.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="i3a.schbennoa.idpa_vorprojekt.outputPage.OutputPageController">
+<AnchorPane id="AnchorPane" maxHeight="616.0" maxWidth="808.0" minHeight="616.0" minWidth="808.0" prefHeight="616.0" prefWidth="808.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="i3a.schbennoa.idpa_vorprojekt.outputPage.OutputPageController">
 	<stylesheets>
 		<URL value="@/styles/outputStyles/OutputStyles.css" />
 	</stylesheets>
    <children>
-      <Pagination fx:id="pagesOut" layoutX="125.0" layoutY="157.0" pageCount="100" prefHeight="424.0" prefWidth="545.0" />
+      <ImageView fx:id="ausgabeBG" fitHeight="616.0" fitWidth="808.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../img/rot.jpg" />
+         </image>
+      </ImageView>
+      <Pagination fx:id="pagesOut" blendMode="LIGHTEN" layoutX="143.0" layoutY="136.0" pageCount="100" prefHeight="415.0" prefWidth="519.0" />
+      <Label layoutX="339.0" layoutY="39.0" text="Ausgabe" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

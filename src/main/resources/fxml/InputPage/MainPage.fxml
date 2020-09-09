@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="i3a.schbennoa.idpa_vorprojekt.InputPage.MainPageController">
    <children>
-      <Label layoutX="80.0" layoutY="99.0" text="Abschreibungsart *" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="99.0" />
-      <Label layoutX="80.0" layoutY="212.0" text="Abschreibungsmethode *" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="212.0" />
-      <RadioButton fx:id="rbDirekt" layoutX="100.0" layoutY="129.0" mnemonicParsing="false" selected="true" text="direkt" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="129.0" />
-      <RadioButton fx:id="rbIndirekt" layoutX="99.0" layoutY="156.0" mnemonicParsing="false" text="indirekt" AnchorPane.leftAnchor="99.0" AnchorPane.topAnchor="156.0" />
-      <RadioButton fx:id="rbLinear" layoutX="100.0" layoutY="241.0" mnemonicParsing="false" onAction="#rbLinear" selected="true" text="linear" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="241.0" />
-      <RadioButton fx:id="rbDegressive" layoutX="100.0" layoutY="269.0" mnemonicParsing="false" onAction="#rbDegressive" text="degressive" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="269.0" />
-      <Label layoutX="80.0" layoutY="337.0" text="Anschaffungswert *" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="337.0" />
-      <Label layoutX="80.0" layoutY="400.0" text="Nutzungsdauer in Jahre *" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="400.0" />
-      <Label fx:id="lblRestwertProzent" layoutX="80.0" layoutY="463.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="463.0" />
+      <ImageView fitHeight="634.0" fitWidth="591.0">
+         <image>
+            <Image url="@../../img/rot.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="80.0" layoutY="99.0" text="Abschreibungsart *" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="99.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label layoutX="80.0" layoutY="212.0" text="Abschreibungsmethode *" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="212.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <RadioButton fx:id="rbDirekt" layoutX="100.0" layoutY="129.0" mnemonicParsing="false" selected="true" text="direkt" textFill="WHITE" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="129.0" />
+      <RadioButton fx:id="rbIndirekt" layoutX="99.0" layoutY="156.0" mnemonicParsing="false" text="indirekt" textFill="WHITE" AnchorPane.leftAnchor="99.0" AnchorPane.topAnchor="156.0" />
+      <RadioButton fx:id="rbLinear" layoutX="100.0" layoutY="241.0" mnemonicParsing="false" onAction="#rbLinear" selected="true" text="linear" textFill="WHITE" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="241.0" />
+      <RadioButton fx:id="rbDegressive" layoutX="100.0" layoutY="269.0" mnemonicParsing="false" onAction="#rbDegressive" text="degressive" textFill="WHITE" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="269.0" />
+      <Label layoutX="80.0" layoutY="337.0" text="Anschaffungswert *" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="337.0" />
+      <Label layoutX="80.0" layoutY="400.0" text="Nutzungsdauer in Jahre *" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="400.0" />
+      <Label fx:id="lblRestwertProzent" layoutX="80.0" layoutY="463.0" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="463.0" />
       <TextField fx:id="txtAnschaffungswert" layoutX="277.0" layoutY="332.0" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="332.0" />
       <TextField fx:id="txtDauerInJahre" layoutX="277.0" layoutY="395.0" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="395.0" />
       <TextField fx:id="txtRestwertProzent" layoutX="277.0" layoutY="458.0" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="458.0" />
-      <Button fx:id="btnBerechnen" layoutX="464.0" layoutY="579.0" mnemonicParsing="false" onAction="#btnBerechnen" text="berechnen" />
-      <Label fx:id="lblInfo" layoutX="80.0" layoutY="586.0" text="Alle Felder mit * sind Pflichtfelder">
+      <Button fx:id="btnBerechnen" layoutX="464.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnBerechnen" text="Berechnen">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Label fx:id="lblInfo" layoutX="12.0" layoutY="603.0" text="Alle Felder mit * sind Pflichtfelder" textFill="#da0808">
          <font>
             <Font size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblTitle" layoutX="163.0" layoutY="30.0" text="Abschreibungsrechner">
+      <Label fx:id="lblTitle" layoutX="149.0" layoutY="21.0" prefHeight="38.0" prefWidth="265.0" text="Abschreibungsrechner" textFill="WHITE">
          <font>
             <Font size="26.0" />
          </font>
