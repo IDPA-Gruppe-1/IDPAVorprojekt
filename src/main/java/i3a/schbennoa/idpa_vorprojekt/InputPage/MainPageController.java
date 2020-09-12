@@ -19,12 +19,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
+/**
+ * Kontroller der Eingabeseite
+ *
+ * @version 12.09.2020
+ */
 public class MainPageController implements Initializable {
-    
+
 	private ToggleGroup tgAbschreibungsart;
 	private ToggleGroup tgAbschreibungsmethode;
-	
-	
+
 	@FXML
 	private RadioButton rbDirekt;
 	@FXML
@@ -47,72 +51,76 @@ public class MainPageController implements Initializable {
 	private Label lblInfo;
 	@FXML
 	private Label lblTitle;
-    
-   	
+
 	//Singleton Instanz von Calculations
-	Calculations calculations=Calculations.getInstance();
-	
+	private final Calculations calculations = Calculations.getInstance();
+
 	@FXML
 	private void btnBerechnen(ActionEvent event) throws IOException {
-		double anschaffungswert=0.0;
-		int dauerInJahre=0;
-		double restwertProzent=0.0;
-		int dirIn=0;
-		int liDeg=0;
+		double anschaffungswert = 0.0;
+		int dauerInJahre = 0;
+		double restwertProzent = 0.0;
+		int dirIn = 0;
+		int liDeg = 0;
 
-		
-		
 		try {
 			anschaffungswert = Double.parseDouble(this.txtAnschaffungswert.getText());
 			dauerInJahre = Integer.parseInt(this.txtDauerInJahre.getText());
 			restwertProzent = Double.parseDouble(this.txtRestwertProzent.getText());
-			
+
 			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 0) {
 				throw new RuntimeException("nicht plausible Eingaben");
 			}
-		} 
-		catch (Exception e) {
-			this.lblInfo.setText("Es wurden nicht alle Felder* ausgefüllt\noder Buchstaben anstatt Zahlen > 0 eingegeben.");
-			System.out.println(e.getMessage());
 		}
-		
+		catch (Exception ex) {
+			this.lblInfo.setText("Es wurden nicht alle Felder* ausgefüllt\noder Buchstaben anstatt Zahlen > 0 eingegeben.");
+			System.out.println(ex.getMessage());
+		}
+
 		RadioButton selectedRadioZone = (RadioButton) tgAbschreibungsart.getSelectedToggle();
-            String selAbArt = selectedRadioZone.getId();
-	    if(selAbArt==rbDirekt.getId()){
-		    dirIn=0;
-	    }else{
-		    dirIn=1;
-	    }
+		String selAbArt = selectedRadioZone.getId();
+		if (selAbArt == rbDirekt.getId()) {
+			dirIn = 0;
+		}
+		else {
+			dirIn = 1;
+		}
 
-	    selectedRadioZone=(RadioButton)tgAbschreibungsmethode.getSelectedToggle();
-	    String selAbMeth=selectedRadioZone.getId();
-	    if(selAbMeth==rbLinear.getId()){
-		    liDeg=0;
-	    }else{
-		    liDeg=1;
-	    }
+		selectedRadioZone = (RadioButton) tgAbschreibungsmethode.getSelectedToggle();
+		String selAbMeth = selectedRadioZone.getId();
+		if (selAbMeth == rbLinear.getId()) {
+			liDeg = 0;
+		}
+		else {
+			liDeg = 1;
+		}
 		// Hier Methoden für die Berechnung aufrufen
-		calculations.calculate(anschaffungswert,dauerInJahre,dirIn,liDeg,restwertProzent);
+		calculations.calculate(anschaffungswert, dauerInJahre, dirIn, liDeg, restwertProzent);
 
-		  try {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 808, 616);
-        Stage stage = new Stage();
-        stage.setTitle("Ausgabe");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.sizeToScene();
-        
-        stage.show();
-	((Node)(event.getSource())).getScene().getWindow().hide();
-    } catch (IOException e) {
-        Logger logger = Logger.getLogger(getClass().getName());
-        logger.log(Level.SEVERE, "Failed to create new Window.", e);
-    }
-		
+		//Neues Fenster aufrufen
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
+			Scene scene = new Scene(fxmlLoader.load(), 808, 616);
+			Stage stage = new Stage();
+			stage.setTitle("Ausgabe");
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.sizeToScene();
+
+			stage.show();
+			((Node) (event.getSource())).getScene().getWindow().hide();
+		}
+		catch (IOException e) {
+			Logger logger = Logger.getLogger(getClass().getName());
+			logger.log(Level.SEVERE, "Failed to create new Window.", e);
+		}
+
 	}
-    
+	
+	/**
+	 *Konstruktor der Controller Klasse 
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// Radiobuttons zur richtigen ToggleGroup hinzufuegen
@@ -123,11 +131,11 @@ public class MainPageController implements Initializable {
 		rbIndirekt.setToggleGroup(tgAbschreibungsart);
 		rbLinear.setToggleGroup(tgAbschreibungsmethode);
 		rbDegressive.setToggleGroup(tgAbschreibungsmethode);
-		
+
 		txtRestwertProzent.setVisible(false);
 		lblRestwertProzent.setText("Restwert der Anlage *");
-		txtRestwertProzent.setVisible(true);	
-	}    
+		txtRestwertProzent.setVisible(true);
+	}
 
 	@FXML
 	private void rbLinear(ActionEvent event) {

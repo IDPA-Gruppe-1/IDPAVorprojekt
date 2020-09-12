@@ -8,8 +8,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+
+/**
+ * Zuständig für die Aktionen, beim Starten des Programmes
+ * 
+ *@version 12.09.2020 
+ */
 public class MainApp extends Application {
 
+
+	/**
+	 *Öffnet das erste Fenster
+	 */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/InputPage/MainPage.fxml"));

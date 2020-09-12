@@ -17,9 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 /**
- * FXML Controller class
+ *Kontroller der Ausgabeseite 
+ * 
  *
- * @author 1810g
+ * @version 12.09.2020
  */
 public class OutputPageController implements Initializable {
 
@@ -27,20 +28,25 @@ public class OutputPageController implements Initializable {
 	private Pagination pagesOut;
 
 	//Instanz der Calculations Klasse
-	Calculations calculations = Calculations.getInstance();
+	private final Calculations calculations = Calculations.getInstance();
     @FXML
     private ImageView ausgabeBG;
 
 	/**
-	 * Initializes the controller class.
+	 * Konstruktor der Kontroller Klasse
+	 * Label1: das aktuelle Jahr
+	 * Label2: Der Betrag des Anlagevermögen Kontos
+	 * Label3: Der Betrag des WBAnlagevermögen Kontos
+	 * Label4: der Betrag des Abschreibung Kontos
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
 		
 		//Erstellen der Pagination mit Länge der Abschreibungsliste
 		pagesOut.setPageCount(calculations.getKonten()[2].getBetraegeList().size());
-		//pagesOut.setPageCount(10);
+
+
+		//Factory für das Beüllen der Seiten der Pagination
 		 pagesOut.setPageFactory((pageIndex) -> {
 
             Label label1 = new Label("Jahr:  " + (pageIndex+1));
