@@ -4,6 +4,7 @@ package i3a.schbennoa.idpa_vorprojekt;
 import java.util.Scanner;
 
 /**
+ * In dieser Klasse werden die ganzen Berechnungen des Programmes gemacht
  *
  * @version 12.09.2020
  */
@@ -26,7 +27,7 @@ public class Calculations {
 	private static Calculations instance=null;
 
 	
-	private Konto[] konten=new Konto[3];
+	private final Konto[] konten=new Konto[3];
 
 
 	private Calculations(){

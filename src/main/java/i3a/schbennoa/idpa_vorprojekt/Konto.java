@@ -2,15 +2,11 @@ package i3a.schbennoa.idpa_vorprojekt;
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
+ * Diese Klasse simuliert ein Konto einer Bilanz
  *
- * @author 1810g
+ * @version 12.09.2020
  */
 
 
@@ -19,10 +15,16 @@ import java.util.ArrayList;
 
 public class Konto {
 
-	double kontoStand = 0;
-	ArrayList<Double>betraegeList=new ArrayList();
+	private double kontoStand = 0;
+	private final ArrayList<Double>betraegeList=new ArrayList();
 	
-
+	
+	/**
+	 * Addiert oder Subtrahiert einen Betrag auf das Konto
+	 * 
+	 * @param betrag betrag der auf das Konto gebucht wird
+	 * @param konto  0: von Konto subtrahieren, 1 auf Konto addieren
+	 */
 	public void add(double betrag, int konto) {
 		if (konto == 0) {
 			kontoStand -= betrag;
