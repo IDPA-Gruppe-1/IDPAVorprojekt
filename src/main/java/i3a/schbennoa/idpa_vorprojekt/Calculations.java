@@ -3,37 +3,30 @@ package i3a.schbennoa.idpa_vorprojekt;
 
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author 1810g
+ * @version 12.09.2020
  */
 public class Calculations {
-	double anschaffungswert=0;
-	double dauerInJahren=0;
-	double abschProzent=0;
-	double restwert=0;
+	private double anschaffungswert=0;
+	private double dauerInJahren=0;
+	private double abschProzent=0;
+	private double restwert=0;
 	
-	//Variable ob Direkt oder Indirekt
-	int dirIn=0;
+	//Variable ob Direkt(0) oder Indirekt(1)
+	private int dirIn=0;
 
 
-	//Variable ob Linear oder Degressiv
-	int liDeg=0;
+	//Variable ob Linear(0) oder Degressiv(1)
+	private int liDeg=0;
 
 
 
 	//Singleton Pattern Instanz
-	static Calculations instance=null;
+	private static Calculations instance=null;
 
 	
-	Scanner in=new Scanner(System.in);
-	Konto[] konten=new Konto[3];
+	private Konto[] konten=new Konto[3];
 
 
 	private Calculations(){
@@ -57,9 +50,20 @@ public class Calculations {
 		return instance;
 	}
 	
+	/**
+	* Berechnet den Abschreibungsbetrag jedes Jahres und bucht die daraus folgenden Beträge auf die Konten
+	* 
+	* 
+ 	* @param anschaffungswert Wert des Objektes, beim Kauf 
+	* @param dauerInJahren  Über wie lange das Objekt absgeschrieben werden soll
+	* @param dirIn  0 für direkte Abschreibung, 1 für indirekte Abschreibungen 
+	* @param liDeg 0 für lineare Abschreibung, 1 für degressive Abschreibung
+	* @param restWertProzent entweder wieviel Prozent jedes Jahr abgeschrieben werden sollen oder wie gross der Restwert des Objekts am Ende sein soll
+	* 
+	*/
 	public void calculate(double anschaffungswert, int dauerInJahren, int dirIn,int liDeg,double restWertProzent){
-		for(int i=0;i<konten.length;i++){
-			konten[i].setkontoStand(0);
+		for (Konto konten1 : konten) {
+			konten1.setkontoStand(0);
 		}
 		this.anschaffungswert=anschaffungswert;
 		this.dauerInJahren=dauerInJahren;
@@ -95,13 +99,7 @@ public class Calculations {
 			}
 		}
 		
-		
-		
-
-
-		
 	}
-
 
 
 	public Konto[] getKonten() {
