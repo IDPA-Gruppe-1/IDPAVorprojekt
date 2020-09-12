@@ -62,7 +62,8 @@ public class MainPageController implements Initializable {
 		double restwertProzent = 0.0;
 		int dirIn = 0;
 		int liDeg = 0;
-
+		boolean validInput=false;
+		
 		try {
 			anschaffungswert = Double.parseDouble(this.txtAnschaffungswert.getText());
 			dauerInJahre = Integer.parseInt(this.txtDauerInJahre.getText());
@@ -71,12 +72,14 @@ public class MainPageController implements Initializable {
 			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 0) {
 				throw new RuntimeException("nicht plausible Eingaben");
 			}
+
+			validInput=true;
 		}
 		catch (Exception ex) {
 			this.lblInfo.setText("Es wurden nicht alle Felder* ausgefüllt\noder Buchstaben anstatt Zahlen > 0 eingegeben.");
 			System.out.println(ex.getMessage());
 		}
-
+		if(validInput){
 		RadioButton selectedRadioZone = (RadioButton) tgAbschreibungsart.getSelectedToggle();
 		String selAbArt = selectedRadioZone.getId();
 		if (selAbArt == rbDirekt.getId()) {
@@ -114,6 +117,7 @@ public class MainPageController implements Initializable {
 		catch (IOException e) {
 			Logger logger = Logger.getLogger(getClass().getName());
 			logger.log(Level.SEVERE, "Failed to create new Window.", e);
+		}
 		}
 
 	}
