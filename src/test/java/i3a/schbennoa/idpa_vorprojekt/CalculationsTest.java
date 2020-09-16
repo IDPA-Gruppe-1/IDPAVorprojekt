@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 /**
  *
  * @author 1810g
+ * @version 16.09.2020
  */
 public class CalculationsTest {
 	
