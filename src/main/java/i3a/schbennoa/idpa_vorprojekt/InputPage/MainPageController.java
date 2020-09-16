@@ -68,14 +68,14 @@ public class MainPageController implements Initializable {
 			dauerInJahre = Integer.parseInt(this.txtDauerInJahre.getText());
 			restwertProzent = Double.parseDouble(this.txtRestwertProzent.getText());
 
-			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 0) {
+			if (anschaffungswert < 1 || dauerInJahre < 1 || restwertProzent < 0||(restwertProzent>100&&liDeg==1)||(restwertProzent>anschaffungswert&&liDeg==0)) {
 				throw new RuntimeException("nicht plausible Eingaben");
 
 			}
 
 		}
 		catch (Exception ex) {
-			this.lblInfo.setText("Es wurden nicht alle Felder* ausgefüllt\noder Buchstaben anstatt Zahlen > 0 eingegeben.");
+			this.lblInfo.setText("Es wurden nicht alle Felder* ausgefüllt\n Oder keine plausiblen Eingaben.");
 			System.out.println(ex.getMessage());
 			return;
 		}
