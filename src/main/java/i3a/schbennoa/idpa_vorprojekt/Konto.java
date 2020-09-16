@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Diese Klasse simuliert ein Konto einer Bilanz
  *
- * @version 12.09.2020
+ * @version 16.09.2020
  */
 
 
