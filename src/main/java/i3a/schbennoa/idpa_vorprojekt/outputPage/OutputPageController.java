@@ -31,6 +31,12 @@ public class OutputPageController implements Initializable {
 	private final Calculations calculations = Calculations.getInstance();
     @FXML
     private ImageView ausgabeBG;
+	@FXML
+	private Label lblAb;
+	@FXML
+	private Label lblWB;
+	@FXML
+	private Label lblAb1;
 
 	/**
 	 * Konstruktor der Kontroller Klasse
@@ -61,7 +67,7 @@ public class OutputPageController implements Initializable {
 	    if(calculations.getKonten()[1].getBetraegeList().get(0)==0){
 		    anlageVermoegen-=calculations.getKonten()[2].getBetraegeList().get(pageIndex);
 	    }
-            Label label2 = new Label("Anlagevermögen:  "+anlageVermoegen);
+            Label label2 = new Label("Anlagevermögen:  "+anlageVermoegen );
             label2.setStyle("-fx-text-fill: white; -fx-font-size: 18");
             Label label3 = new Label("WB Anlagevermögen:  "+calculations.getKonten()[1].getBetraegeList().get(pageIndex));
             label3.setStyle("-fx-text-fill: white; -fx-font-size: 18");

@@ -13,7 +13,7 @@
 		<URL value="@/styles/outputStyles/OutputStyles.css" />
 	</stylesheets>
    <children>
-      <ImageView fx:id="ausgabeBG" fitHeight="616.0" fitWidth="808.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="ausgabeBG" fitHeight="703.0" fitWidth="808.0" AnchorPane.bottomAnchor="-87.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../img/rot.jpg" />
          </image>
@@ -24,5 +24,8 @@
             <Font size="26.0" />
          </font>
       </Label>
+      <Label fx:id="lblAb" layoutX="29.0" layoutY="632.0" text="Abschreibungen: Betrag der jedes Jahr abgeschrieben wird" textFill="WHITE" />
+      <Label fx:id="lblWB" layoutX="371.0" layoutY="632.0" text="Anlagevermögen: Anschaffungswert/Aktueller Wer der Anlage" textFill="WHITE" />
+      <Label fx:id="lblAb1" layoutX="371.0" layoutY="664.0" text="WB Anlagevermögen:Betrag der Abschreibungen, bei indirekter Abschreibung" textFill="WHITE" />
    </children>
 </AnchorPane>
