@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 /**
  * Zuständig für die Aktionen, beim Starten des Programmes
  * 
- *@version 12.09.2020 
+ *@version 16.09.2020 
  */
 public class MainApp extends Application {
 
@@ -28,6 +28,7 @@ public class MainApp extends Application {
         
         stage.setTitle("Abschreibungsrechner");
         stage.setScene(scene);
+	//Quelle:https://stackoverflow.com/questions/20732100/javafx-why-does-stage-setresizablefalse-cause-additional-margins  (Aktuell: 16.09.2020)
         stage.setResizable(false);
         stage.sizeToScene();
         stage.show();

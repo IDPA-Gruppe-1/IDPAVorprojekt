@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
  *Kontroller der Ausgabeseite 
  * 
  *
- * @version 12.09.2020
+ * @version 16.09.2020
  */
 public class OutputPageController implements Initializable {
 
@@ -47,6 +47,7 @@ public class OutputPageController implements Initializable {
 
 
 		//Factory für das Beüllen der Seiten der Pagination
+		//Quelle:http://tutorials.jenkov.com/javafx/pagination.html (Aktuell am 16.09.2020) 
 		 pagesOut.setPageFactory((pageIndex) -> {
 
             Label label1 = new Label("Jahr:  " + (pageIndex+1));

@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 /**
  * Kontroller der Eingabeseite
  *
- * @version 12.09.2020
+ * @version 16.09.2020
  */
 public class MainPageController implements Initializable {
 
@@ -100,6 +100,7 @@ public class MainPageController implements Initializable {
 		calculations.calculate(anschaffungswert, dauerInJahre, dirIn, liDeg, restwertProzent);
 
 		//Neues Fenster aufrufen
+		//Quelle:https://stackoverflow.com/questions/15041760/javafx-open-new-window (Aktuell:16.09.2020)
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(getClass().getResource("/fxml/OutputPage/OutputPage.fxml"));
