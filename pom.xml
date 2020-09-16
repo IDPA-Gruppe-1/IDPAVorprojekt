@@ -90,6 +90,8 @@
                     <compilerArguments>
                         <bootclasspath>${sun.boot.class.path}${path.separator}${java.home}/lib/jfxrt.jar</bootclasspath>
                     </compilerArguments>
+		    <fork>true</fork>
+		    <executable>C:\Program Files\Java\jdk1.8.0_181\bin\javac</executable>
                 </configuration>
             </plugin>
             <plugin>
@@ -102,6 +104,28 @@
                     </additionalClasspathElements>
                 </configuration>
             </plugin>
+	    <plugin>
+  <artifactId>maven-assembly-plugin</artifactId>
+  <configuration>
+    <archive>
+      <manifest>
+        <mainClass>i3a.schbennoa.idpa_vorprojekt.MainApp</mainClass>
+      </manifest>
+    </archive>
+    <descriptorRefs>
+      <descriptorRef>jar-with-dependencies</descriptorRef>
+    </descriptorRefs>
+  </configuration>
+  <executions>
+    <execution>
+      <id>make-assembly</id> <!-- this is used for inheritance merges -->
+      <phase>package</phase> <!-- bind to the packaging phase -->
+      <goals>
+        <goal>single</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
         </plugins>
     </build>
     <dependencies>
